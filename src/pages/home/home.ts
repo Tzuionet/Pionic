@@ -30,6 +30,10 @@ export class HomePage {
     alert.present();
   }
 
+  navToLoginPage() {
+    this.navCtrl.push("LoginPage");
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
   }
