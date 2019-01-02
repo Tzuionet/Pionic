@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the HomePage page.
@@ -18,7 +18,7 @@ export class HomePage {
   firstName: string = "";
   lastName: string = "";
 
-  constructor(private navCtrl: NavController, private navParams: NavParams, private alertCtrl: AlertController) {
+  constructor(private navCtrl: NavController, private alertCtrl: AlertController) {
   }
 
   hello(fn: string, ln: string) {

@@ -1,6 +1,8 @@
 {
   "name": "Pionic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "id": "b9d6133e"
 }
