@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FingerprintAIO} from '@ionic-native/fingerprint-aio';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,11 +16,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private faio: FingerprintAIO) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  login() {
+    this.faio.show({
+      clientId: 'Fingerprint-Demo',
+      clientSecret: 'password', // Only Android
+      localizedFallbackTitle: 'Use Pin', // Only iOS
+      localizedReason: 'Please authenticate' // Only iOS
+    })
+      .then((result: any) => {
+        this.navCtrl.setRoot('HomePage');
+      })
+      .catch((error: any) => {
+        console.log('err: ', error);
+      });
   }
+
+
+  //ionViewDidLoad() {
+  //  console.log('ionViewDidLoad LoginPage');
+  //}
 
 }
