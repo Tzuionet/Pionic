@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
+import { Camera } from '@ionic-native/camera';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen,Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FingerprintAIO
   ]

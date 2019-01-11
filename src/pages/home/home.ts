@@ -1,3 +1,4 @@
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController } from 'ionic-angular';
 
@@ -15,10 +16,12 @@ import { IonicPage, NavController, AlertController } from 'ionic-angular';
 })
 export class HomePage {
 
+  base64Image:string;
+
   firstName: string = "";
   lastName: string = "";
 
-  constructor(private navCtrl: NavController, private alertCtrl: AlertController) {
+  constructor(private navCtrl: NavController, private alertCtrl: AlertController, private camera:Camera) {
   }
 
   hello(fn: string, ln: string) {
@@ -36,6 +39,23 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+  }
+
+  takePhoto() {
+    const options: CameraOptions = {
+      quality: 30,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // If it's base64 (DATA_URL):
+     this.base64Image = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+     // Handle error
+    });
   }
 
 }
